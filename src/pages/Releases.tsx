@@ -1,4 +1,4 @@
-import { Download, ExternalLink, Calendar, CheckCircle2 } from 'lucide-react'
+import { Download, ExternalLink, Calendar, CheckCircle2, Star } from 'lucide-react'
 import { GradientMenu } from '@/components/ui/gradient-button'
 
 export function Releases() {
@@ -11,9 +11,25 @@ export function Releases() {
 
             <div className="space-y-12">
                 <ReleaseCard
+                    version="V 0.2.1"
+                    date="January 22, 2026"
+                    isLatest={true}
+                    description="Major feature update! Redesigned Catalogue UI, reworked Library with full .lua games support, in-launcher game downloads and launching, DLC Adder, Credits tab, and Donations tab."
+                    features={[
+                        "Redesigned Catalogue UI",
+                        "Reworked Library with full .lua games support",
+                        "In-launcher game downloads and launching",
+                        "DLC Adder",
+                        "Credits tab",
+                        "Donations tab"
+                    ]}
+                    downloadUrl="https://github.com/sushi-dev55/Sushi-Launcher/releases/download/v0.2.1/Sushi.Launcher.Setup.0.2.1.exe"
+                />
+
+                <ReleaseCard
                     version="V 0.2.0"
                     date="December 28, 2025"
-                    isLatest={true}
+                    isLatest={false}
                     description="Big update! We've added multi-language support, a brand new Online-Fix tab, auto-update functionality, and the option to restart Steam directly from the launcher. This update makes Sushi Launcher even more powerful!"
                     features={[
                         "Multi-language support",
@@ -86,7 +102,7 @@ function ReleaseCard({ version, date, isLatest, description, features, downloadU
                 <ul className="grid gap-3">
                     {features.map((feature: string, i: number) => (
                         <li key={i} className="flex items-start gap-2 text-gray-300">
-                            <span className="text-pink-500 mt-1">✨</span>
+                            <Star className="w-4 h-4 text-pink-500 mt-1 flex-shrink-0" />
                             {feature}
                         </li>
                     ))}

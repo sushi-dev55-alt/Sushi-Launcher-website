@@ -13,7 +13,7 @@ export function Landing() {
                 <Link to="/releases" className="group rounded-full border border-pink-500/30 bg-pink-500/5 backdrop-blur-sm text-base transition-all ease-in hover:cursor-pointer hover:bg-pink-500/10 mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
                     <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1.5 text-pink-400 transition ease-out hover:text-pink-300 hover:duration-300" shimmerWidth={150}>
                         <Sparkles className="w-4 h-4 mr-2" />
-                        <span>Version 0.3.0 Coming Soon</span>
+                        <span>Version 0.2.1 Released</span>
                         <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
                     </AnimatedShinyText>
                 </Link>
