@@ -23,7 +23,7 @@ export function Releases() {
                         "Credits tab",
                         "Donations tab"
                     ]}
-                    downloadUrl="https://github.com/sushi-dev55/Sushi-Launcher/releases/download/v0.2.1/Sushi.Launcher.Setup.0.2.1.exe"
+                    downloadUrl="https://github.com/sushi-dev55/Sushi-Launcher/releases/tag/V0.2.1"
                 />
 
                 <ReleaseCard
