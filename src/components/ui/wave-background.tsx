@@ -98,10 +98,9 @@ export function Waves({
         })
         pathsRef.current = []
 
-        // Optimization: Keep xGap small (10) to maintain visual density (original was 8),
-        // but increase yGap (32) to drastically reduce point calculations per line.
-        const xGap = 10
-        const yGap = 32
+        // Restored to original values for full visual density
+        const xGap = 8
+        const yGap = 8
 
         const oWidth = width + 200
         const oHeight = height + 30

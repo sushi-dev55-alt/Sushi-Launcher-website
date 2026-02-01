@@ -1,7 +1,7 @@
 import { Outlet, Link } from 'react-router-dom'
 import { Waves } from '@/components/ui/wave-background'
 import { GradientButton } from '@/components/ui/gradient-button'
-import { Github, Home, Package, MessageCircle, Heart, Coins } from 'lucide-react'
+import { Github, Home, Package, MessageCircle, Heart, Coins, Youtube } from 'lucide-react'
 
 export function Layout() {
     return (
@@ -83,6 +83,14 @@ function Navbar() {
                 </div>
 
                 <div className="flex items-center gap-3">
+                    <GradientButton
+                        title="YouTube"
+                        icon={<Youtube className="w-5 h-5" />}
+                        href="https://www.youtube.com/watch?v=pjBrwJRbIXs"
+                        gradientFrom="#FF0000"
+                        gradientTo="#FF4444"
+                        className="w-[45px] h-[45px] hover:w-[140px]"
+                    />
                     <GradientButton
                         title="Discord"
                         icon={<MessageCircle className="w-5 h-5" />}
