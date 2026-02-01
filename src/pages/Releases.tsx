@@ -11,9 +11,26 @@ export function Releases() {
 
             <div className="space-y-12">
                 <ReleaseCard
+                    version="V 0.2.3"
+                    date="February 1, 2026"
+                    isLatest={true}
+                    description="Huge Update! Migrated to Tauri v2 for 20x smaller size and better performance. Fixed loading spinner animations, restored vibrant Update UI, improved badge styling, and cleaned up interface headers. Full backend rewrite in Rust."
+                    features={[
+                        "Migrated to Tauri v2 (20x smaller size)",
+                        "Better performance",
+                        "Fixed loading spinner animations",
+                        "Restored vibrant Update UI",
+                        "Improved badge styling",
+                        "Cleaned up interface headers",
+                        "Full backend rewrite in Rust"
+                    ]}
+                    downloadUrl="https://github.com/sushi-dev55/Sushi-Launcher/releases/tag/V0.2.3"
+                />
+
+                <ReleaseCard
                     version="V 0.2.1"
                     date="January 22, 2026"
-                    isLatest={true}
+                    isLatest={false}
                     description="Major feature update! Redesigned Catalogue UI, reworked Library with full .lua games support, in-launcher game downloads and launching, DLC Adder, Credits tab, and Donations tab."
                     features={[
                         "Redesigned Catalogue UI",
