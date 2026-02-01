@@ -5,6 +5,7 @@ import { Landing } from './pages/Landing'
 import { Releases } from './pages/Releases'
 import { Credits } from './pages/Credits'
 import { Donate } from './pages/Donate'
+import { Reviews } from './pages/Reviews'
 import * as Preview from './pages/Preview'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
             <Route path="/releases" element={<Releases />} />
             <Route path="/credits" element={<Credits />} />
             <Route path="/donate" element={<Donate />} />
+            <Route path="/reviews" element={<Reviews />} />
             <Route path="/preview" element={<Preview.Preview />} />
           </Route>
         </Routes>

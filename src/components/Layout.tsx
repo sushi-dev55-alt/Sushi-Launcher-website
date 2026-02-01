@@ -1,7 +1,7 @@
 import { Outlet, Link } from 'react-router-dom'
 import { Waves } from '@/components/ui/wave-background'
 import { GradientButton } from '@/components/ui/gradient-button'
-import { Github, Home, Package, MessageCircle, Heart, Coins, Youtube } from 'lucide-react'
+import { Github, Home, Package, MessageCircle, Heart, Coins, Youtube, Star } from 'lucide-react'
 
 export function Layout() {
     return (
@@ -78,6 +78,14 @@ function Navbar() {
                         href="/donate"
                         gradientFrom="#f59e0b"
                         gradientTo="#fbbf24"
+                        className="w-[50px] h-[50px] hover:w-[140px]"
+                    />
+                    <GradientButton
+                        title="Reviews"
+                        icon={<Star className="w-5 h-5" />}
+                        href="/reviews"
+                        gradientFrom="#3b82f6"
+                        gradientTo="#60a5fa"
                         className="w-[50px] h-[50px] hover:w-[140px]"
                     />
                 </div>
