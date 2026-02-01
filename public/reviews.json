@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "username": "sushi",
+    "rating": 5,
+    "testimonial": "Please make a review and if its bad please type why its bad\n",
+    "image": "/discord-logo.png"
+  }
+]
