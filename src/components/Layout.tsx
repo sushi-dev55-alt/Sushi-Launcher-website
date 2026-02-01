@@ -86,7 +86,7 @@ function Navbar() {
                     <GradientButton
                         title="YouTube"
                         icon={<Youtube className="w-5 h-5" />}
-                        href="https://www.youtube.com/watch?v=pjBrwJRbIXs"
+                        href="https://www.youtube.com/@SushiTools"
                         gradientFrom="#FF0000"
                         gradientTo="#FF4444"
                         className="w-[45px] h-[45px] hover:w-[140px]"
