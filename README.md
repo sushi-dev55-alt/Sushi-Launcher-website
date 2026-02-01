@@ -1,27 +1,19 @@
-<div align="center">
 # 🍣 Sushi Launcher
 ### The Ultimate Game Launcher with a Beautiful UI
 [![Version](https://img.shields.io/badge/version-0.2.3-pink?style=for-the-badge)](https://github.com/sushi-dev55/Sushi-Launcher/releases)
 [![Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/PYgAMs9PU9)
 [![Website](https://img.shields.io/badge/Website-Visit-ff69b4?style=for-the-badge&logo=vercel&logoColor=white)](https://sushi-launcher.vercel.app/)
 [![YouTube](https://img.shields.io/badge/Tutorial-Watch-red?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=pjBrwJRbIXs)
-<br/>
 **Sushi Launcher** is a sleek, modern game launcher built with Tauri and React. It features one of the cleanest UIs in the game launcher space, with a dark theme, pink accents, smooth animations, and a seamless user experience.
-<br/>
 [📥 Download](#-download) • [✨ Features](#-features) • [📸 Screenshots](#-screenshots) • [🎬 Tutorial](#-tutorial) • [💬 Discord](#-community)
-</div>
 ---
 ## 📸 Screenshots
-<div align="center">
 ![Home Page](https://github.com/sushi-dev55/Sushi-Launcher/blob/main/image_2025-12-26_153129534.png?raw=true)
 *🏠 Home - Browse hot and featured games*
-<br/>
 ![Catalogue](https://github.com/sushi-dev55/Sushi-Launcher/blob/main/image_2025-12-26_155338006.png?raw=true)
 *📚 Catalogue - Explore the full game library*
-<br/>
 ![Game Details](https://github.com/sushi-dev55/Sushi-Launcher/blob/main/image_2025-12-26_155651394.png?raw=true)
 *🎮 Game Details - View info, media, and install games*
-</div>
 ---
 ## ✨ Features
 | Feature | Description |
@@ -85,7 +77,5 @@ If you like Sushi Launcher, please:
 - 💡 **Suggest features** on Discord
 - 📢 **Share with friends**
 ---
-<div align="center">
 ### Made with 💖 by sushi-dev55
 **[Website](https://sushi-launcher.vercel.app/)** • **[Discord](https://discord.gg/PYgAMs9PU9)** • **[YouTube](https://www.youtube.com/watch?v=pjBrwJRbIXs)** • **[Releases](https://github.com/sushi-dev55/Sushi-Launcher/releases)**
-</div>
