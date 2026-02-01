@@ -44,6 +44,7 @@ New to Sushi Launcher? Watch the setup tutorial:
 |---------|--------------|------------|
 | **v0.3.0** | Coming Soon | More features in development! |
 | **v0.2.3** | Feb 2026 | Migrated to Tauri v2, UI Improvements, Animation Fixes |
+| **v0.2.1** | Jan 22, 2026 | Redesigned Catalogue UI, Library rework (.lua support), In-launcher downloads, DLC Adder, Credits & Donations |
 | **v0.2.0** | Dec 2025 | Multi-language support, Online-Fix tab, Auto-update, Steam restart prompt, Custom titlebar |
 | **v0.1.0** | Dec 2025 | Initial release - Home, Library, Catalogue, Game details, Installation |
 ---
