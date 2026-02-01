@@ -98,9 +98,10 @@ export function Waves({
         })
         pathsRef.current = []
 
-        // Use larger spacing to reduce the number of points and improve performance
-        const xGap = 24  // Increased spacing for better performance (was 8)
-        const yGap = 24  // Increased spacing for better performance (was 8)
+        // Optimization: Keep xGap small (10) to maintain visual density (original was 8),
+        // but increase yGap (32) to drastically reduce point calculations per line.
+        const xGap = 10
+        const yGap = 32
 
         const oWidth = width + 200
         const oHeight = height + 30
