@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Testimonial } from '@/components/ui/testimonial-card'
 import { GradientButton } from '@/components/ui/gradient-button'
-import { MessageSquare, Star, X, CheckCircle2 } from 'lucide-react'
+import { MessageSquare, Star, X } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
