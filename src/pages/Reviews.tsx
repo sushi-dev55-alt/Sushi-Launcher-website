@@ -24,10 +24,23 @@ export function Reviews() {
 
     useEffect(() => {
         // Fetch reviews from the public JSON file
-        fetch('/reviews.json')
-            .then(res => res.json())
-            .then(data => setReviews(data))
-            .catch(err => console.error("Failed to load reviews:", err))
+        const loadReviews = async () => {
+            try {
+                // 1. Fetch official reviews
+                const res = await fetch('/reviews.json')
+                const data = await res.json()
+
+                // 2. Fetch local pending reviews (for testing/dev)
+                const savedLocal = localStorage.getItem('local_reviews')
+                const localReviews = savedLocal ? JSON.parse(savedLocal) : []
+
+                // Combine: Local ones first (so you see yours), then official
+                setReviews([...localReviews, ...data])
+            } catch (err) {
+                console.error("Failed to load reviews:", err)
+            }
+        }
+        loadReviews()
     }, [])
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -41,10 +54,19 @@ export function Reviews() {
             image: "/discord-logo.png",
             testimonial: formData.review
         }
-        setReviews([newReview, ...reviews])
+
+        // Update local state and localStorage
+        const updatedReviews = [newReview, ...reviews]
+        setReviews(updatedReviews)
+
+        // Save to local storage so it persists on refresh (Simulating "Real DB" locally)
+        const savedLocal = localStorage.getItem('local_reviews')
+        const currentLocal = savedLocal ? JSON.parse(savedLocal) : []
+        localStorage.setItem('local_reviews', JSON.stringify([newReview, ...currentLocal]))
+
         setIsSubmitted(true)
 
-        // 2. Send to Backend (Vercel Function)
+        // 2. Send to Backend (Vercel Function) - Only works in Production/Vercel Dev
         try {
             const response = await fetch('/api/submit-review', {
                 method: 'POST',
@@ -53,11 +75,10 @@ export function Reviews() {
             });
 
             if (!response.ok) {
-                console.warn("Backend submission failed (expected on local dev without 'vercel dev'). Optimistic update kept for demo.");
-                // We don't revert state here to allow local demoing, but in prod you might want to show error
+                console.log("Running locally: Saved to localStorage instead of GitHub.");
             }
         } catch (error) {
-            console.error("Failed to submit review:", error);
+            // Ignore error locally
         }
 
         // Reset form after delay
@@ -101,7 +122,11 @@ export function Reviews() {
                         </button>
 
                         {isSubmitted ? (
-                            <div className="flex flex-col items-center justify-center py-10 text-center animate-in fade-in zoom-in duration-500">
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="flex flex-col items-center justify-center py-10 text-center"
+                            >
                                 <div className="relative mb-6">
                                     {/* Glowing Background Pulse */}
                                     <div className="absolute inset-0 bg-pink-500/20 rounded-full blur-xl animate-pulse" />
@@ -124,8 +149,8 @@ export function Reviews() {
                                         <motion.path
                                             initial={{ pathLength: 0, opacity: 0 }}
                                             animate={{ pathLength: 1, opacity: 1 }}
-                                            transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
-                                            d="M30 50 L45 65 L70 35"
+                                            transition={{ delay: 0.5, duration: 0.5, ease: "easeOut" }}
+                                            d="M28 50 L42 66 L72 34"
                                             fill="none"
                                             stroke="#ec4899"
                                             strokeWidth="6"
@@ -139,13 +164,13 @@ export function Reviews() {
                                 <motion.div
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.8, duration: 0.5 }}
+                                    transition={{ delay: 1, duration: 0.5 }}
                                 >
                                     <h2 className="text-3xl font-display font-bold text-white mb-2">Review Submitted!</h2>
                                     <p className="text-gray-400 text-lg">Thank you for your review, {formData.username}!</p>
                                     <p className="text-pink-500/80 text-sm mt-2 font-medium">Your feedback helps us grow.</p>
                                 </motion.div>
-                            </div>
+                            </motion.div>
                         ) : (
                             <>
                                 <h2 className="font-display font-bold text-2xl mb-1 text-white">Write a Review</h2>
