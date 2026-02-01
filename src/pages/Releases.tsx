@@ -17,11 +17,7 @@ export function Releases() {
                     description="Huge Update! Migrated to Tauri v2 for 20x smaller size and better performance. Fixed loading spinner animations, restored vibrant Update UI, improved badge styling, and cleaned up interface headers. Full backend rewrite in Rust."
                     features={[
                         "Migrated to Tauri v2 (20x smaller size)",
-                        "Better performance",
-                        "Fixed loading spinner animations",
-                        "Restored vibrant Update UI",
                         "Improved badge styling",
-                        "Cleaned up interface headers",
                         "Full backend rewrite in Rust"
                     ]}
                     downloadUrl="https://github.com/sushi-dev55/Sushi-Launcher/releases/tag/V0.2.3"
