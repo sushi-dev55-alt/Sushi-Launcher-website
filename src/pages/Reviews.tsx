@@ -29,24 +29,35 @@ export function Reviews() {
             .catch(err => console.error("Failed to load reviews:", err))
     }, [])
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
         if (!formData.username || !formData.review) return
 
-        // In a real app, this would POST to a backend
-        // For now, we simulate success and show the user what happened
-
-        // Construct the new review object
+        // 1. Optimistic UI Update
         const newReview: Review = {
             username: formData.username,
             rating: formData.rating,
             image: "/discord-logo.png",
             testimonial: formData.review
         }
-
-        // Optimistically update UI
         setReviews([newReview, ...reviews])
         setIsSubmitted(true)
+
+        // 2. Send to Backend (Vercel Function)
+        try {
+            const response = await fetch('/api/submit-review', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+
+            if (!response.ok) {
+                console.warn("Backend submission failed (expected on local dev without 'vercel dev'). Optimistic update kept for demo.");
+                // We don't revert state here to allow local demoing, but in prod you might want to show error
+            }
+        } catch (error) {
+            console.error("Failed to submit review:", error);
+        }
 
         // Reset form after delay
         setTimeout(() => {
