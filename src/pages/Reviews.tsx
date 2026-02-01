@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Testimonial } from '@/components/ui/testimonial-card'
 import { GradientButton } from '@/components/ui/gradient-button'
 import { MessageSquare, Star, X, CheckCircle2 } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 interface Review {
@@ -100,12 +101,50 @@ export function Reviews() {
                         </button>
 
                         {isSubmitted ? (
-                            <div className="flex flex-col items-center justify-center py-10 text-center animate-in fade-in zoom-in">
-                                <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mb-4 text-green-500">
-                                    <CheckCircle2 className="w-8 h-8" />
+                            <div className="flex flex-col items-center justify-center py-10 text-center animate-in fade-in zoom-in duration-500">
+                                <div className="relative mb-6">
+                                    {/* Glowing Background Pulse */}
+                                    <div className="absolute inset-0 bg-pink-500/20 rounded-full blur-xl animate-pulse" />
+
+                                    {/* Animated Circle & Checkmark */}
+                                    <svg className="w-24 h-24" viewBox="0 0 100 100">
+                                        <motion.circle
+                                            initial={{ pathLength: 0, opacity: 0 }}
+                                            animate={{ pathLength: 1, opacity: 1 }}
+                                            transition={{ duration: 0.8, ease: "easeOut" }}
+                                            cx="50"
+                                            cy="50"
+                                            r="45"
+                                            fill="none"
+                                            stroke="#ec4899"
+                                            strokeWidth="5"
+                                            strokeLinecap="round"
+                                            className="drop-shadow-[0_0_10px_rgba(236,72,153,0.5)]"
+                                        />
+                                        <motion.path
+                                            initial={{ pathLength: 0, opacity: 0 }}
+                                            animate={{ pathLength: 1, opacity: 1 }}
+                                            transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
+                                            d="M30 50 L45 65 L70 35"
+                                            fill="none"
+                                            stroke="#ec4899"
+                                            strokeWidth="6"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            className="drop-shadow-[0_0_10px_rgba(236,72,153,0.5)]"
+                                        />
+                                    </svg>
                                 </div>
-                                <h2 className="text-2xl font-bold text-white mb-2">Review Submitted!</h2>
-                                <p className="text-gray-400">Thanks for your feedback, {formData.username}!</p>
+
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.8, duration: 0.5 }}
+                                >
+                                    <h2 className="text-3xl font-display font-bold text-white mb-2">Review Submitted!</h2>
+                                    <p className="text-gray-400 text-lg">Thank you for your review, {formData.username}!</p>
+                                    <p className="text-pink-500/80 text-sm mt-2 font-medium">Your feedback helps us grow.</p>
+                                </motion.div>
                             </div>
                         ) : (
                             <>
