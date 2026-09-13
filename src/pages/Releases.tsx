@@ -11,9 +11,30 @@ export function Releases() {
 
             <div className="space-y-12">
                 <ReleaseCard
+                    version="V 0.4.0"
+                    date="September 13, 2026"
+                    isLatest={true}
+                    description="This is a big one. Pretty much the whole UI got redone and the launcher is a lot faster. Steam was blocking the launcher for sending too many requests, which is why most games said couldn't load game, so it now uses a different Steam API that doesn't get blocked. Trailers play again too since Steam changed their video format and the old player couldn't handle it."
+                    features={[
+                        "Whole new design: tall game covers, a featured banner with the actual game logos and one clean top bar instead of 3 stacked ones",
+                        "Game pages redone with a big banner, trailers, screenshots, details and system requirements",
+                        "Recently viewed games in the sidebar and on home so you can jump back quick",
+                        "Library filters (all, installed, not installed) and a play button when you hover a game",
+                        "Search the catalogue from any page with Ctrl+K",
+                        "Way faster: game info gets saved, catalogue pages load in 1 request instead of 24 and the next page loads before you click it",
+                        "Fixed couldn't load game on most games and fixed trailers not playing",
+                        "The catalogue shows every game now instead of the first 1000 on repeat",
+                        "NSFW games aren't blocked anymore",
+                        "Settings cleaned up: SteamTools status, hide Sushi-kun, clear cache"
+                    ]}
+                    downloadUrl="https://github.com/sushi-dev55/Sushi-Launcher/releases/download/V0.4.0/Sushi.Launcher_0.4.0_x64-setup.exe"
+                    githubUrl="https://github.com/sushi-dev55/Sushi-Launcher/releases/tag/V0.4.0"
+                />
+
+                <ReleaseCard
                     version="V 0.2.3"
                     date="February 1, 2026"
-                    isLatest={true}
+                    isLatest={false}
                     description="Huge Update! Migrated to Tauri v2 for 20x smaller size and better performance. Fixed loading spinner animations, restored vibrant Update UI, improved badge styling, and cleaned up interface headers. Full backend rewrite in Rust."
                     features={[
                         "Migrated to Tauri v2 (20x smaller size)",
@@ -78,9 +99,10 @@ interface ReleaseCardProps {
     description: string
     features: string[]
     downloadUrl: string
+    githubUrl?: string
 }
 
-function ReleaseCard({ version, date, isLatest, description, features, downloadUrl }: ReleaseCardProps) {
+function ReleaseCard({ version, date, isLatest, description, features, downloadUrl, githubUrl }: ReleaseCardProps) {
     return (
         <div className={`relative p-8 rounded-2xl bg-[#12121a]/80 border ${isLatest ? 'border-pink-500/50 shadow-[0_0_30px_rgba(255,77,157,0.1)]' : 'border-pink-500/10'} hover:border-pink-500/50 transition-all duration-300 backdrop-blur-sm animate-in fade-in slide-in-from-bottom-8`}>
             {isLatest && (
@@ -134,7 +156,7 @@ function ReleaseCard({ version, date, isLatest, description, features, downloadU
                     {
                         title: 'GitHub',
                         icon: <ExternalLink className="w-5 h-5" />,
-                        href: downloadUrl,
+                        href: githubUrl ?? downloadUrl,
                         gradientFrom: '#8b5cf6',
                         gradientTo: '#a78bfa',
                     },
