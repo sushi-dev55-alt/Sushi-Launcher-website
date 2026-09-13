@@ -37,6 +37,7 @@ export function Landing() {
                             {
                                 title: 'Download',
                                 icon: <Download className="w-6 h-6" />,
+                                warp: true,
                                 href: 'https://github.com/sushi-dev55/Sushi-Launcher/releases/latest',
                                 gradientFrom: '#ff4d9d',
                                 gradientTo: '#ff8dc7',

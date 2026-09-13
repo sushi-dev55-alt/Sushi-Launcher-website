@@ -1,29 +1,24 @@
-import { Outlet, Link } from 'react-router-dom'
-import { Waves } from '@/components/ui/wave-background'
+import { lazy, Suspense } from 'react'
+import { Outlet, Link, useLocation } from 'react-router-dom'
 import { GradientButton } from '@/components/ui/gradient-button'
 import { Github, Home, Package, MessageCircle, Heart, Coins, Youtube, Star } from 'lucide-react'
 
+// three.js loads in its own chunk so it never delays the first paint
+const LibraryTunnel = lazy(() =>
+    import('@/components/ui/library-tunnel').then((m) => ({ default: m.LibraryTunnel }))
+)
+
 export function Layout() {
+    const { pathname } = useLocation()
+
     return (
         <div className="relative min-h-screen w-full bg-[#0a0a0f] text-white font-sans selection:bg-pink-500/30 overflow-x-hidden">
-            {/* Background Waves - Persistent */}
+            {/* Background: 3D tunnel of game covers - full strength on home, dimmed elsewhere */}
             <div className="fixed inset-0 z-0 pointer-events-none">
-                <Waves
-                    pointerSize={1.5}
-                    strokeColor="#ff4d9d"
-                    backgroundColor="#0a0a0f"
-                    className="w-full h-full opacity-50"
-                />
+                <Suspense fallback={null}>
+                    <LibraryTunnel dimmed={pathname !== '/'} />
+                </Suspense>
             </div>
-
-            {/* Grid Overlay */}
-            <div
-                className="fixed inset-0 z-0 pointer-events-none opacity-20"
-                style={{
-                    backgroundImage: `linear-gradient(rgba(255, 77, 157, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 77, 157, 0.1) 1px, transparent 1px)`,
-                    backgroundSize: '40px 40px'
-                }}
-            />
 
             <div className="relative z-10 flex flex-col min-h-screen">
                 <Navbar />

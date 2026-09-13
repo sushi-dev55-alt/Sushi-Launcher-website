@@ -9,6 +9,8 @@ interface GradientButtonProps {
     href?: string;
     onClick?: () => void;
     className?: string;
+    /** Hovering this button sends the background tunnel to warp speed */
+    warp?: boolean;
 }
 
 export function GradientButton({
@@ -19,6 +21,7 @@ export function GradientButton({
     href,
     onClick,
     className,
+    warp,
 }: GradientButtonProps) {
     const style = {
         '--gradient-from': gradientFrom,
@@ -57,6 +60,7 @@ export function GradientButton({
                 rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 style={style}
                 className={baseClasses}
+                data-warp={warp || undefined}
             >
                 {content}
             </a>
@@ -68,6 +72,7 @@ export function GradientButton({
             onClick={onClick}
             style={style}
             className={baseClasses}
+            data-warp={warp || undefined}
         >
             {content}
         </button>
